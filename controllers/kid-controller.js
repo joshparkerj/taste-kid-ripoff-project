@@ -11,14 +11,14 @@ module.exports = {
     const db = req.app.get('db');
     bc.saltAndHash(String(req.body.password))
       .then(hash => {
-        return db.new_user([
+        return db.new_kid([
           req.body.name,
           req.body.email,
           hash
         ])
       })
       .then(r(200,res))
-      .catch(err('new user registration failed',res))
+      .catch(err('new kid registration failed',res))
   },
   login: (req,res,next) => {
     const db = req.app.get('db');
@@ -35,6 +35,7 @@ module.exports = {
       })
       .then(kid => {
         req.session.kid_id = kid[0].id;
+        req.session.admin = kid[0].privilege_level > 0;
         return kid;
       })
       .then(r(200,res))

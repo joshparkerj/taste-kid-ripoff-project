@@ -8,8 +8,9 @@ const sesh = require('express-session')({
   saveUninitialized: true
 });
 
-const np = require('./controllers/nodb-controller');
-const uc = require('./controllers/user-controller');
+const nc = require('./controllers/nodb-controller');
+const kc = require('./controllers/kid-controller');
+const mc = require('./controllers/media-controller.js');
 
 app.use(bodyParser.json());
 app.use(sesh);
@@ -22,12 +23,14 @@ massive(process.env.DBURI)
     console.log(err);
   })
 
-app.use(np.logreqs);
+app.use(nc.logreqs);
 
-app.get('/health', np.health);
+app.get('/health', nc.health);
 
-app.post('/user/new', uc.new);
+app.post('/kid/new', kc.new);
 
-app.post('/user/login', uc.login);
+app.post('/kid/login', kc.login);
+
+app.post('/media/new', mc.new)
 
 app.listen(8080);
