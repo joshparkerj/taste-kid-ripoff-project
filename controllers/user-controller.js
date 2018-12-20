@@ -12,7 +12,7 @@ module.exports = {
     bc.saltAndHash(String(req.body.password))
       .then(hash => {
         return db.new_user([
-          req.body.username,
+          req.body.name,
           req.body.email,
           hash
         ])

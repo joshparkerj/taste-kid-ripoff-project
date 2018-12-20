@@ -9,10 +9,14 @@
   },
   "keywords": [],
   "author": "Josh Parker",
+  "repository": "https://github.com/joshparkerj/taste-kid-ripoff-project.git",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "jest": "^23.6.0",
     "massive": "^5.7.2",
     "vue": "^2.5.21"

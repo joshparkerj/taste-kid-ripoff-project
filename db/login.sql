@@ -1,2 +1,2 @@
 SELECT id,name,email,sociallink,img_url FROM KID
-WHERE username = $1;
+WHERE name = $1;
